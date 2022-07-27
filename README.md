@@ -28,14 +28,14 @@ assert dut.out.value == int_list[sel], "Randomised test failed with: {INPUT_LIST
                      AssertionError: Randomised test failed with: 3 : 01101 :: 00
 ```
 
-### Test Scenario
+## Test Scenario
 - Test Inputs: inp11=3 sel=13(binary 01101)
 - Expected Output: out=3
 - Observed Output in the DUT dut.out=0
 
 Output mismatches for the above inputs proving that there is a design bug
 
-### Design Bug
+## Design Bug
 Based on the above test input and analysing the design, we see the following
 
 ```
@@ -50,7 +50,7 @@ Based on the above test input and analysing the design, we see the following
 ```
 For the adder design, the logic should be ``5'b01100: out = inp12`` instead of ``5'b01101: out = inp12`` as in the design code.
 
-### Design Fix
+## Design Fix
 Updating the design and re-running the test makes the test pass.
 
 ![](https://github.com/vyomasystems-lab/challenges-Jeenang/blob/master/raw_data/CUB_result_pass_level1_design1.png)
