@@ -58,7 +58,7 @@ async def adder_randomised_test(dut):
         inp28 = random.randint(0, 3)
         inp29 = random.randint(0, 3)
         inp30 = random.randint(0, 3)
-        sel =random.randint(0, 31)
+        sel =random.randint(0, 30)
 
         # input driving
         dut.inp0.value = inp0
@@ -104,4 +104,4 @@ async def adder_randomised_test(dut):
         
         dut._log.info(f'inp={int_list[sel]:05} sel={sel:05} model="MUX " DUT={int(dut.out.value):05}')
         assert dut.out.value == int_list[sel], "Randomised test failed with: {INPUT_LIST} : {SEL} :: {OUT}".format(
-            INPUT_LIST=dut.inp30.value, SEL=dut.sel.value, OUT=dut.out.value)
+            INPUT_LIST=int_list[sel], SEL=dut.sel.value, OUT=dut.out.value)
