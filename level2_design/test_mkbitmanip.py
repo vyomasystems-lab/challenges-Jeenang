@@ -35,8 +35,8 @@ def run_test(dut):
     ######### CTB : Modify the test to expose the bug #############
     # input transaction
     mav_putvalue_src1 = 0x5
-    mav_putvalue_src2 = 0x0
-    mav_putvalue_src3 = 0x0
+    mav_putvalue_src2 = 0x2
+    mav_putvalue_src3 = 0x3
     mav_putvalue_instr = 0x101010B3
 
     # expected output from the model
@@ -59,4 +59,5 @@ def run_test(dut):
     
     # comparison
     error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}'
+    error_message = error_message + f'For Input: mav_putvalue_src1 = {hex(mav_putvalue_src1)}, mav_putvalue_src2 = {hex(mav_putvalue_src2)}, mav_putvalue_src3 = {hex(mav_putvalue_src3)}, mav_putvalue_instr = {hex(mav_putvalue_instr)}'
     assert dut_output == expected_mav_putvalue, error_message
