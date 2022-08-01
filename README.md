@@ -57,7 +57,6 @@ Updating the design and re-running the test makes the test pass.
 
 The updated design is checked in as mux_fix.v
 
-
 ## Level1 Design2 : Sequence Detector Design Verification Environment
 
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (SEQ_1011 Detector) which takes in single bit input *inp_bit* along with single bit *clk* and *reset*. It gives *seq_seen* output which is also a single bit. 
@@ -114,3 +113,28 @@ Updating the design and re-running the test makes the test pass.
 ![](https://github.com/vyomasystems-lab/challenges-Jeenang/blob/master/raw_data/CUB_result_pass_level1_design2.png)
 
 The updated design is checked in as seq_detect_1011_fix.v
+
+## Level2 Design : Bit Manupulation Coprocessor Design Verification Environment
+
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test which takes in mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3, mav_putvalue_instr all 32 bits wide. 
+
+The inputs are passed one by one as shown belo,
+```
+
+```
+Also, 10us clock is defined with use of cocotb library. 
+```
+clock = Clock(dut.clk, 10, units="us")  # Create a 10us period clock on port clk
+cocotb.start_soon(clock.start())        # Start the clock
+```
+
+The assert statement is used for comparing the sequence detector's outut to the expected value when valid sequence is passed.
+
+The following error is seen:
+```
+assert dut_output == expected_mav_putvalue, error_message
+                     AssertionError: Value mismatch DUT = 0xa does not match MODEL = 0x0For Input: mav_putvalue_src1 = 0x5, mav_putvalue_src2 = 0x2, mav_putvalue_src3 = 0x3, mav_putvalue_instr = 0x101010b3
+```
+
+![](https://github.com/vyomasystems-lab/challenges-Jeenang/blob/master/raw_data/CUB_result_fail_level1_design2.png)
+
