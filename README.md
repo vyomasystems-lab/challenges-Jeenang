@@ -120,7 +120,11 @@ The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explaine
 
 The inputs are passed one by one as shown belo,
 ```
-
+   # input transaction
+    mav_putvalue_src1 = 0x5
+    mav_putvalue_src2 = 0x2
+    mav_putvalue_src3 = 0x3
+    mav_putvalue_instr = 0x101010B3
 ```
 Also, 10us clock is defined with use of cocotb library. 
 ```
@@ -135,6 +139,16 @@ The following error is seen:
 assert dut_output == expected_mav_putvalue, error_message
                      AssertionError: Value mismatch DUT = 0xa does not match MODEL = 0x0For Input: mav_putvalue_src1 = 0x5, mav_putvalue_src2 = 0x2, mav_putvalue_src3 = 0x3, mav_putvalue_instr = 0x101010b3
 ```
+### Test Scenario
+- Test Inputs: 
+  -mav_putvalue_src1 = 0x5
+  -mav_putvalue_src2 = 0x2
+  -mav_putvalue_src3 = 0x3
+  -mav_putvalue_instr = 0x101010b3
+- Expected Output: out= 0x0
+- Observed Output in the DUT dut.out=0xa
 
-![](https://github.com/vyomasystems-lab/challenges-Jeenang/blob/master/raw_data/CUB_result_fail_level1_design2.png)
+Output mismatches for the above inputs proving that there is a design bug
+
+![](https://github.com/vyomasystems-lab/challenges-Jeenang/blob/master/raw_data/CUB_result_fail_level2_design.png)
 
